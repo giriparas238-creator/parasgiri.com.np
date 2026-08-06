@@ -1,0 +1,148 @@
+let currentSpeech;
+
+
+
+function summarize(news){
+
+
+let summary =
+"JARVIS Analysis: "
++
+news
++
+" is an important development in science and technology.";
+
+
+
+showAI(summary);
+
+
+
+}
+
+
+
+function translateNepali(news){
+
+
+let result =
+
+"नेपाली अनुवाद: "
++
+news;
+
+
+showAI(result);
+
+
+}
+
+
+
+function translateHindi(news){
+
+
+let result =
+
+"हिंदी अनुवाद: "
++
+news;
+
+
+showAI(result);
+
+
+}
+
+
+
+
+
+function showAI(text){
+
+
+let box =
+document.getElementById("ai-result");
+
+
+box.innerHTML=
+
+`
+
+<hr>
+
+<p>
+
+${text}
+
+</p>
+
+
+<button onclick="speakAI('${text}')">
+
+🔊 Voice
+
+</button>
+
+
+<button onclick="pauseVoice()">
+
+⏸ Pause
+
+</button>
+
+
+<button onclick="resumeVoice()">
+
+▶ Resume
+
+</button>
+
+
+`;
+
+
+
+}
+
+
+
+
+function speakAI(text){
+
+
+currentSpeech =
+new SpeechSynthesisUtterance(text);
+
+
+currentSpeech.lang="en-US";
+
+
+currentSpeech.rate=1;
+
+
+speechSynthesis.speak(currentSpeech);
+
+
+}
+
+
+
+
+function pauseVoice(){
+
+
+speechSynthesis.pause();
+
+
+}
+
+
+
+function resumeVoice(){
+
+
+speechSynthesis.resume();
+
+
+}
